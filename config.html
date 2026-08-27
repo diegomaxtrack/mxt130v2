@@ -767,18 +767,6 @@
   .tpill-estrutura{ color: var(--ink-3); background: var(--surface-2); }
   .tpill-lista    { color: var(--brown); background: color-mix(in srgb, var(--brown) 16%, var(--surface)); }
 
-  .en-badge {
-    display: inline-block;
-    font-size: 0.625rem;
-    font-weight: 700;
-    letter-spacing: .04em;
-    color: var(--warm-text);
-    border: 1px solid currentColor;
-    border-radius: 2px;
-    padding: 0 4px;
-    margin-left: 4px;
-  }
-
   .obs-block {
     margin: 0;
     padding: 12px 14px;
@@ -797,7 +785,7 @@
   .obs-block table th { background: var(--surface); color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; font-size: 0.625rem; }
   .obs-block strong { color: var(--ink); }
 
-  .enum-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; align-items: start; }
+  .enum-grid { display: flex; flex-direction: column; gap: 10px; }
 
   @media (max-width: 900px) {
     .docs-layout { grid-template-columns: minmax(0, 1fr); }
@@ -865,13 +853,13 @@
         <div class="card-head">
           <h2>Como ler este guia</h2>
         </div>
-        <p>A configuração do MXT13x é uma estrutura única (<code>MaxConfig</code>) enviada ao equipamento pela plataforma (comando <em>ChangeMaxConfig</em>) e reportada de volta pelo comando <em>ReportMaxConfig</em>. Ela é dividida em módulos (GPS, transmissão, telemetria, I/Os etc.), listados abaixo. Todos os campos são opcionais: um campo ausente mantém o valor atual do equipamento.</p><p>Para cada campo são apresentados:</p><p>Campos do tipo <em>enum</em> aceitam apenas os valores listados na seção <a href="#enumeracoes">Enumerações</a> ao final do documento.</p><ul>
+        <p>A configuração do MXT13x é uma estrutura única enviada ao equipamento pela plataforma. Ela é dividida em módulos (GPS, transmissão, telemetria, I/Os etc.), listados abaixo. Todos os campos são opcionais: um campo ausente mantém o valor atual do equipamento.</p><p>Para cada campo são apresentados:</p><ul>
 <li><strong>Campo</strong>: nome do parâmetro na estrutura de configuração;</li>
 <li><strong>Tipo</strong>: tipo de dado (booleano, inteiro, texto, enum ou estrutura aninhada);</li>
-<li><strong>Descrição</strong>: função do parâmetro (extraída das anotações do firmware; quando só existe descrição em inglês, ela é marcada com <em>(EN)</em>);</li>
-<li><strong>Padrão</strong>: valor padrão de fábrica, quando documentado;</li>
-<li><strong>Unidade / Faixa</strong>: unidade de medida e limites mínimo/máximo, quando documentados.</li>
-</ul>
+<li><strong>Descrição</strong>: função do parâmetro (extraída das anotações do firmware);</li>
+<li><strong>Padrão</strong>: valor padrão de fábrica.</li>
+<li><strong>Unidade / Faixa</strong>: unidade de medida e limites mínimo/máximo.</li>
+</ul><p>Campos do tipo <em>enum</em> aceitam apenas os valores listados na seção <a href="#enumeracoes">Enumerações</a> ao final do documento.</p>
         <div class="pill-legend">
           <span class="tpill tpill-booleano">Booleano</span>
           <span class="tpill tpill-inteiro">Inteiro</span>
@@ -879,8 +867,6 @@
           <span class="tpill tpill-enum">Enum</span>
           <span class="tpill tpill-estrutura">Estrutura</span>
           <span class="tpill tpill-lista">Lista</span>
-          <span class="en-badge" title="Descrição disponível apenas em inglês">EN</span>
-          <span class="legend-note">— só existe descrição em inglês na documentação de origem</span>
         </div>
       </section>
 
@@ -1191,7 +1177,7 @@
 <tr data-row="1">
 <td><code>tcpConnectionTimeout</code></td>
 <td><span class="tpill tpill-inteiro">Inteiro</span> (u32)</td>
-<td>Seconds - Time to tracker close TCP connection by inactivity <span class="en-badge" title="Descrição disponível apenas em inglês">EN</span></td>
+<td>Seconds - Time to tracker close TCP connection by inactivity</td>
 <td>—</td>
 <td>—</td>
 </tr>
@@ -1212,7 +1198,7 @@
 </tbody>
 </table></div>
     
-    <div class="mod-children"><details class="mod-card lvl-1" id="cfg-gprs-discharge" open>
+    <div class="mod-children"><details class="mod-card lvl-1" id="cfg-gprs-discharge">
   <summary>
     <span class="mod-num">2.1</span>
     <span class="mod-name"><code>gprs.discharge</code></span>
@@ -1251,7 +1237,7 @@
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-gprs-transmissionsamples" open>
+<details class="mod-card lvl-1" id="cfg-gprs-transmissionsamples">
   <summary>
     <span class="mod-num">2.2</span>
     <span class="mod-name"><code>gprs.transmissionSamples</code></span>
@@ -1264,7 +1250,7 @@
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-gprs-maxtrackcloudconfig" open>
+<details class="mod-card lvl-1" id="cfg-gprs-maxtrackcloudconfig">
   <summary>
     <span class="mod-num">2.3</span>
     <span class="mod-name"><code>gprs.maxtrackCloudConfig</code></span>
@@ -1300,7 +1286,7 @@
 </tbody>
 </table></div>
     
-    <div class="mod-children"><details class="mod-card lvl-2" id="cfg-gprs-maxtrackcloudconfig-address" open>
+    <div class="mod-children"><details class="mod-card lvl-2" id="cfg-gprs-maxtrackcloudconfig-address">
   <summary>
     <span class="mod-num">2.3.1</span>
     <span class="mod-name"><code>gprs.maxtrackCloudConfig.address</code></span>
@@ -1416,7 +1402,7 @@
 </tbody>
 </table></div>
     
-    <div class="mod-children"><details class="mod-card lvl-1" id="cfg-gprsconnectivity-simcard1" open>
+    <div class="mod-children"><details class="mod-card lvl-1" id="cfg-gprsconnectivity-simcard1">
   <summary>
     <span class="mod-num">3.1</span>
     <span class="mod-name"><code>gprsConnectivity.simcard1</code></span>
@@ -1452,7 +1438,7 @@
 </tbody>
 </table></div>
     
-    <div class="mod-children"><details class="mod-card lvl-2" id="cfg-gprsconnectivity-simcard1-apn" open>
+    <div class="mod-children"><details class="mod-card lvl-2" id="cfg-gprsconnectivity-simcard1-apn">
   <summary>
     <span class="mod-num">3.1.1</span>
     <span class="mod-name"><code>gprsConnectivity.simcard1.apn</code></span>
@@ -1501,7 +1487,7 @@
 </div>
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-gprsconnectivity-apnlist" open>
+<details class="mod-card lvl-1" id="cfg-gprsconnectivity-apnlist">
   <summary>
     <span class="mod-num">3.2</span>
     <span class="mod-name"><code>gprsConnectivity.apnList</code></span>
@@ -1537,7 +1523,7 @@
 </tbody>
 </table></div>
     
-    <div class="mod-children"><details class="mod-card lvl-2" id="cfg-gprsconnectivity-apnlist-apnitem" open>
+    <div class="mod-children"><details class="mod-card lvl-2" id="cfg-gprsconnectivity-apnlist-apnitem">
   <summary>
     <span class="mod-num">3.2.1</span>
     <span class="mod-name"><code>gprsConnectivity.apnList.apnItem</code></span>
@@ -1850,7 +1836,7 @@
 </tbody>
 </table></div>
     
-    <div class="mod-children"><details class="mod-card lvl-1" id="cfg-system-peripherals" open>
+    <div class="mod-children"><details class="mod-card lvl-1" id="cfg-system-peripherals">
   <summary>
     <span class="mod-num">6.1</span>
     <span class="mod-name"><code>system.peripherals</code></span>
@@ -1903,7 +1889,7 @@
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-system-lowpower" open>
+<details class="mod-card lvl-1" id="cfg-system-lowpower">
   <summary>
     <span class="mod-num">6.2</span>
     <span class="mod-name"><code>system.lowPower</code></span>
@@ -2023,7 +2009,7 @@
 </tbody>
 </table></div>
     
-    <div class="mod-children"><details class="mod-card lvl-2" id="cfg-system-lowpower-normalmodemodules" open>
+    <div class="mod-children"><details class="mod-card lvl-2" id="cfg-system-lowpower-normalmodemodules">
   <summary>
     <span class="mod-num">6.2.1</span>
     <span class="mod-name"><code>system.lowPower.normalModeModules</code></span>
@@ -2114,7 +2100,7 @@
 </div>
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-system-events" open>
+<details class="mod-card lvl-1" id="cfg-system-events">
   <summary>
     <span class="mod-num">6.3</span>
     <span class="mod-name"><code>system.events</code></span>
@@ -2468,7 +2454,7 @@
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-system-debug" open>
+<details class="mod-card lvl-1" id="cfg-system-debug">
   <summary>
     <span class="mod-num">6.4</span>
     <span class="mod-name"><code>system.debug</code></span>
@@ -2504,7 +2490,7 @@
 </tbody>
 </table></div>
     
-    <div class="mod-children"><details class="mod-card lvl-2" id="cfg-system-debug-trace" open>
+    <div class="mod-children"><details class="mod-card lvl-2" id="cfg-system-debug-trace">
   <summary>
     <span class="mod-num">6.4.1</span>
     <span class="mod-name"><code>system.debug.trace</code></span>
@@ -2567,7 +2553,7 @@
 </div>
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-system-timezone" open>
+<details class="mod-card lvl-1" id="cfg-system-timezone">
   <summary>
     <span class="mod-num">6.5</span>
     <span class="mod-name"><code>system.timeZone</code></span>
@@ -2599,7 +2585,7 @@
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-system-ntp" open>
+<details class="mod-card lvl-1" id="cfg-system-ntp">
   <summary>
     <span class="mod-num">6.6</span>
     <span class="mod-name"><code>system.ntp</code></span>
@@ -2631,7 +2617,7 @@
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-system-eventsblockqty" open>
+<details class="mod-card lvl-1" id="cfg-system-eventsblockqty">
   <summary>
     <span class="mod-num">6.7</span>
     <span class="mod-name"><code>system.eventsBlockQty</code></span>
@@ -2985,7 +2971,7 @@
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-system-eventsblockinterval" open>
+<details class="mod-card lvl-1" id="cfg-system-eventsblockinterval">
   <summary>
     <span class="mod-num">6.8</span>
     <span class="mod-name"><code>system.eventsBlockInterval</code></span>
@@ -3339,7 +3325,7 @@
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-system-modemcommands" open>
+<details class="mod-card lvl-1" id="cfg-system-modemcommands">
   <summary>
     <span class="mod-num">6.9</span>
     <span class="mod-name"><code>system.modemCommands</code></span>
@@ -3424,7 +3410,7 @@
 </tbody>
 </table></div>
     
-    <div class="mod-children"><details class="mod-card lvl-1" id="cfg-ios-ignition" open>
+    <div class="mod-children"><details class="mod-card lvl-1" id="cfg-ios-ignition">
   <summary>
     <span class="mod-num">7.1</span>
     <span class="mod-name"><code>ios.ignition</code></span>
@@ -3530,7 +3516,7 @@
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-ios-panic" open>
+<details class="mod-card lvl-1" id="cfg-ios-panic">
   <summary>
     <span class="mod-num">7.2</span>
     <span class="mod-name"><code>ios.panic</code></span>
@@ -3569,7 +3555,7 @@
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-ios-inputs" open>
+<details class="mod-card lvl-1" id="cfg-ios-inputs">
   <summary>
     <span class="mod-num">7.3</span>
     <span class="mod-name"><code>ios.inputs</code></span>
@@ -3612,7 +3598,7 @@
 </tbody>
 </table></div>
     
-    <div class="mod-children"><details class="mod-card lvl-2" id="cfg-ios-inputs-input1" open>
+    <div class="mod-children"><details class="mod-card lvl-2" id="cfg-ios-inputs-input1">
   <summary>
     <span class="mod-num">7.3.1</span>
     <span class="mod-name"><code>ios.inputs.input1</code></span>
@@ -3682,7 +3668,7 @@
 </div>
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-ios-outputs" open>
+<details class="mod-card lvl-1" id="cfg-ios-outputs">
   <summary>
     <span class="mod-num">7.4</span>
     <span class="mod-name"><code>ios.outputs</code></span>
@@ -3718,7 +3704,7 @@
 </tbody>
 </table></div>
     
-    <div class="mod-children"><details class="mod-card lvl-2" id="cfg-ios-outputs-output1" open>
+    <div class="mod-children"><details class="mod-card lvl-2" id="cfg-ios-outputs-output1">
   <summary>
     <span class="mod-num">7.4.1</span>
     <span class="mod-name"><code>ios.outputs.output1</code></span>
@@ -4023,14 +4009,14 @@
 <tr data-row="1">
 <td><code>blackBoxfillGSensorData</code></td>
 <td><span class="tpill tpill-booleano">Booleano</span> (0/1)</td>
-<td>Enable encodedAxisSamples on BlackBoxSecond <span class="en-badge" title="Descrição disponível apenas em inglês">EN</span></td>
+<td>Enable encodedAxisSamples on BlackBoxSecond</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr data-row="1">
 <td><code>blackBoxDataType</code></td>
 <td><span class="tpill tpill-enum">Enum</span> <a href="#enum-blackboxdatatype">BlackBoxDataType</a></td>
-<td>Define encodedAxisSamples data type <span class="en-badge" title="Descrição disponível apenas em inglês">EN</span></td>
+<td>Define encodedAxisSamples data type</td>
 <td>—</td>
 <td>—</td>
 </tr>
@@ -4340,7 +4326,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
 </tbody>
 </table>
 </blockquote>
-    <div class="mod-children"><details class="mod-card lvl-1" id="cfg-telemetry-speeds" open>
+    <div class="mod-children"><details class="mod-card lvl-1" id="cfg-telemetry-speeds">
   <summary>
     <span class="mod-num">8.1</span>
     <span class="mod-name"><code>telemetry.speeds</code></span>
@@ -4484,7 +4470,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-telemetry-timers" open>
+<details class="mod-card lvl-1" id="cfg-telemetry-timers">
   <summary>
     <span class="mod-num">8.2</span>
     <span class="mod-name"><code>telemetry.timers</code></span>
@@ -4635,7 +4621,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-telemetry-hardacceleration" open>
+<details class="mod-card lvl-1" id="cfg-telemetry-hardacceleration">
   <summary>
     <span class="mod-num">8.3</span>
     <span class="mod-name"><code>telemetry.hardAcceleration</code></span>
@@ -4785,7 +4771,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-telemetry-eventsmask" open>
+<details class="mod-card lvl-1" id="cfg-telemetry-eventsmask">
   <summary>
     <span class="mod-num">8.4</span>
     <span class="mod-name"><code>telemetry.eventsMask</code></span>
@@ -4898,7 +4884,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
 <tr data-row="1">
 <td><code>rpm</code></td>
 <td><span class="tpill tpill-inteiro">Inteiro</span> (u32)</td>
-<td>Excess blue range, red range and speed on neutral <span class="en-badge" title="Descrição disponível apenas em inglês">EN</span></td>
+<td>Excess blue range, red range and speed on neutral</td>
 <td>—</td>
 <td>—</td>
 </tr>
@@ -5122,7 +5108,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-telemetry-rpm" open>
+<details class="mod-card lvl-1" id="cfg-telemetry-rpm">
   <summary>
     <span class="mod-num">8.5</span>
     <span class="mod-name"><code>telemetry.rpm</code></span>
@@ -5231,7 +5217,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-telemetry-delta" open>
+<details class="mod-card lvl-1" id="cfg-telemetry-delta">
   <summary>
     <span class="mod-num">8.6</span>
     <span class="mod-name"><code>telemetry.delta</code></span>
@@ -5333,7 +5319,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-telemetry-externalpower" open>
+<details class="mod-card lvl-1" id="cfg-telemetry-externalpower">
   <summary>
     <span class="mod-num">8.7</span>
     <span class="mod-name"><code>telemetry.externalPower</code></span>
@@ -5544,7 +5530,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
 <tr data-row="1">
 <td><code>externalPowerRemovalDebounce</code></td>
 <td><span class="tpill tpill-inteiro">Inteiro</span> (u32)</td>
-<td>(Seconds) <span class="en-badge" title="Descrição disponível apenas em inglês">EN</span></td>
+<td>(Seconds)</td>
 <td>—</td>
 <td>—</td>
 </tr>
@@ -5561,7 +5547,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-telemetry-datasourceconfig" open>
+<details class="mod-card lvl-1" id="cfg-telemetry-datasourceconfig">
   <summary>
     <span class="mod-num">8.8</span>
     <span class="mod-name"><code>telemetry.dataSourceConfig</code></span>
@@ -5621,7 +5607,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-telemetry-eventsblockqty" open>
+<details class="mod-card lvl-1" id="cfg-telemetry-eventsblockqty">
   <summary>
     <span class="mod-num">8.9</span>
     <span class="mod-name"><code>telemetry.eventsBlockQty</code></span>
@@ -5734,7 +5720,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
 <tr data-row="1">
 <td><code>rpm</code></td>
 <td><span class="tpill tpill-inteiro">Inteiro</span> (u32)</td>
-<td>Excess blue range, red range and speed on neutral <span class="en-badge" title="Descrição disponível apenas em inglês">EN</span></td>
+<td>Excess blue range, red range and speed on neutral</td>
 <td>—</td>
 <td>—</td>
 </tr>
@@ -5849,7 +5835,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-telemetry-eventsblockinterval" open>
+<details class="mod-card lvl-1" id="cfg-telemetry-eventsblockinterval">
   <summary>
     <span class="mod-num">8.10</span>
     <span class="mod-name"><code>telemetry.eventsBlockInterval</code></span>
@@ -5962,7 +5948,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
 <tr data-row="1">
 <td><code>rpm</code></td>
 <td><span class="tpill tpill-inteiro">Inteiro</span> (u32)</td>
-<td>Excess blue range, red range and speed on neutral <span class="en-badge" title="Descrição disponível apenas em inglês">EN</span></td>
+<td>Excess blue range, red range and speed on neutral</td>
 <td>—</td>
 <td>—</td>
 </tr>
@@ -6077,7 +6063,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-telemetry-eventsanalysis" open>
+<details class="mod-card lvl-1" id="cfg-telemetry-eventsanalysis">
   <summary>
     <span class="mod-num">8.11</span>
     <span class="mod-name"><code>telemetry.eventsAnalysis</code></span>
@@ -6113,7 +6099,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
 </tbody>
 </table></div>
     
-    <div class="mod-children"><details class="mod-card lvl-2" id="cfg-telemetry-eventsanalysis-stoppedexcessengineon" open>
+    <div class="mod-children"><details class="mod-card lvl-2" id="cfg-telemetry-eventsanalysis-stoppedexcessengineon">
   <summary>
     <span class="mod-num">8.11.1</span>
     <span class="mod-name"><code>telemetry.eventsAnalysis.stoppedExcessEngineOn</code></span>
@@ -6166,7 +6152,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
     
   </div>
 </details>
-<details class="mod-card lvl-2" id="cfg-telemetry-eventsanalysis-rejectmask" open>
+<details class="mod-card lvl-2" id="cfg-telemetry-eventsanalysis-rejectmask">
   <summary>
     <span class="mod-num">8.11.2</span>
     <span class="mod-name"><code>telemetry.eventsAnalysis.rejectMask</code></span>
@@ -6264,7 +6250,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
 </div>
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-telemetry-inertialmovement" open>
+<details class="mod-card lvl-1" id="cfg-telemetry-inertialmovement">
   <summary>
     <span class="mod-num">8.12</span>
     <span class="mod-name"><code>telemetry.inertialMovement</code></span>
@@ -6324,7 +6310,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-telemetry-speedsamplesevents" open>
+<details class="mod-card lvl-1" id="cfg-telemetry-speedsamplesevents">
   <summary>
     <span class="mod-num">8.13</span>
     <span class="mod-name"><code>telemetry.speedSamplesEvents</code></span>
@@ -6777,7 +6763,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
 </tbody>
 </table></div>
     
-    <div class="mod-children"><details class="mod-card lvl-1" id="cfg-lora-emergencychannel" open>
+    <div class="mod-children"><details class="mod-card lvl-1" id="cfg-lora-emergencychannel">
   <summary>
     <span class="mod-num">10.1</span>
     <span class="mod-name"><code>lora.emergencyChannel</code></span>
@@ -6970,7 +6956,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-lora-commandchannel" open>
+<details class="mod-card lvl-1" id="cfg-lora-commandchannel">
   <summary>
     <span class="mod-num">10.2</span>
     <span class="mod-name"><code>lora.commandChannel</code></span>
@@ -7100,7 +7086,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-lora-pairingchannel" open>
+<details class="mod-card lvl-1" id="cfg-lora-pairingchannel">
   <summary>
     <span class="mod-num">10.3</span>
     <span class="mod-name"><code>lora.pairingChannel</code></span>
@@ -7255,7 +7241,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
 </tbody>
 </table></div>
     
-    <div class="mod-children"><details class="mod-card lvl-2" id="cfg-lora-pairingchannel-batterydevice" open>
+    <div class="mod-children"><details class="mod-card lvl-2" id="cfg-lora-pairingchannel-batterydevice">
   <summary>
     <span class="mod-num">10.3.1</span>
     <span class="mod-name"><code>lora.pairingChannel.batteryDevice</code></span>
@@ -7311,7 +7297,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
 </div>
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-lora-positionchannel" open>
+<details class="mod-card lvl-1" id="cfg-lora-positionchannel">
   <summary>
     <span class="mod-num">10.4</span>
     <span class="mod-name"><code>lora.positionChannel</code></span>
@@ -7438,7 +7424,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
 <tr data-row="1">
 <td><code>dataType</code></td>
 <td><span class="tpill tpill-enum">Enum</span> <a href="#enum-loradatatype">LoraDataType</a></td>
-<td>Which DataType will be sent in LoRa WAN packets (Position, telemetry, Gsensor, ID, Delta) <span class="en-badge" title="Descrição disponível apenas em inglês">EN</span></td>
+<td>Which DataType will be sent in LoRa WAN packets (Position, telemetry, Gsensor, ID, Delta)</td>
 <td>—</td>
 <td>—</td>
 </tr>
@@ -7455,7 +7441,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-lora-wanposition" open>
+<details class="mod-card lvl-1" id="cfg-lora-wanposition">
   <summary>
     <span class="mod-num">10.5</span>
     <span class="mod-name"><code>lora.wanPosition</code></span>
@@ -7529,7 +7515,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-lora-lorawanchannels" open>
+<details class="mod-card lvl-1" id="cfg-lora-lorawanchannels">
   <summary>
     <span class="mod-num">10.6</span>
     <span class="mod-name"><code>lora.loraWanChannels</code></span>
@@ -8121,7 +8107,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-lora-jammerdetection" open>
+<details class="mod-card lvl-1" id="cfg-lora-jammerdetection">
   <summary>
     <span class="mod-num">10.7</span>
     <span class="mod-name"><code>lora.jammerDetection</code></span>
@@ -8171,7 +8157,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
 <tr data-row="1">
 <td><code>loraJammerDetectionVerifyInterval</code></td>
 <td><span class="tpill tpill-inteiro">Inteiro</span> (u32)</td>
-<td>Check interval after jammer presence <span class="en-badge" title="Descrição disponível apenas em inglês">EN</span></td>
+<td>Check interval after jammer presence</td>
 <td>—</td>
 <td>Segundos $DESCRIPTION[Intervalo de verificação após presença de jammer</td>
 </tr>
@@ -8195,7 +8181,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-lora-autodetectcfg" open>
+<details class="mod-card lvl-1" id="cfg-lora-autodetectcfg">
   <summary>
     <span class="mod-num">10.8</span>
     <span class="mod-name"><code>lora.autoDetectCfg</code></span>
@@ -8248,7 +8234,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-lora-statemachine" open>
+<details class="mod-card lvl-1" id="cfg-lora-statemachine">
   <summary>
     <span class="mod-num">10.9</span>
     <span class="mod-name"><code>lora.stateMachine</code></span>
@@ -8410,7 +8396,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
 </tbody>
 </table></div>
     
-    <div class="mod-children"><details class="mod-card lvl-2" id="cfg-lora-statemachine-state00" open>
+    <div class="mod-children"><details class="mod-card lvl-2" id="cfg-lora-statemachine-state00">
   <summary>
     <span class="mod-num">10.9.1</span>
     <span class="mod-name"><code>lora.stateMachine.state00</code></span>
@@ -8480,7 +8466,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
 </div>
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-lora-frequencyhop" open>
+<details class="mod-card lvl-1" id="cfg-lora-frequencyhop">
   <summary>
     <span class="mod-num">10.10</span>
     <span class="mod-name"><code>lora.frequencyHop</code></span>
@@ -8747,7 +8733,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
 </tbody>
 </table></div>
     
-    <div class="mod-children"><details class="mod-card lvl-1" id="cfg-user-nouserconfig" open>
+    <div class="mod-children"><details class="mod-card lvl-1" id="cfg-user-nouserconfig">
   <summary>
     <span class="mod-num">11.1</span>
     <span class="mod-name"><code>user.noUserConfig</code></span>
@@ -8856,7 +8842,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-user-usertypeloginjourneychange" open>
+<details class="mod-card lvl-1" id="cfg-user-usertypeloginjourneychange">
   <summary>
     <span class="mod-num">11.2</span>
     <span class="mod-name"><code>user.userTypeLoginJourneyChange</code></span>
@@ -9049,7 +9035,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-user-usertokenconfig" open>
+<details class="mod-card lvl-1" id="cfg-user-usertokenconfig">
   <summary>
     <span class="mod-num">11.3</span>
     <span class="mod-name"><code>user.userTokenConfig</code></span>
@@ -9141,7 +9127,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
 </tbody>
 </table></div>
     
-    <div class="mod-children"><details class="mod-card lvl-1" id="cfg-wificonfig-radio2g" open>
+    <div class="mod-children"><details class="mod-card lvl-1" id="cfg-wificonfig-radio2g">
   <summary>
     <span class="mod-num">12.1</span>
     <span class="mod-name"><code>wifiConfig.radio2G</code></span>
@@ -9180,7 +9166,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-wificonfig-transmission" open>
+<details class="mod-card lvl-1" id="cfg-wificonfig-transmission">
   <summary>
     <span class="mod-num">12.2</span>
     <span class="mod-name"><code>wifiConfig.transmission</code></span>
@@ -9212,7 +9198,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-wificonfig-accesspoint2g-1" open>
+<details class="mod-card lvl-1" id="cfg-wificonfig-accesspoint2g-1">
   <summary>
     <span class="mod-num">12.3</span>
     <span class="mod-name"><code>wifiConfig.accessPoint2G_1</code></span>
@@ -9297,7 +9283,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
 </tbody>
 </table></div>
     
-    <div class="mod-children"><details class="mod-card lvl-2" id="cfg-wificonfig-accesspoint2g-1-lanconfig" open>
+    <div class="mod-children"><details class="mod-card lvl-2" id="cfg-wificonfig-accesspoint2g-1-lanconfig">
   <summary>
     <span class="mod-num">12.3.1</span>
     <span class="mod-name"><code>wifiConfig.accessPoint2G_1.lanConfig</code></span>
@@ -9347,7 +9333,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
 <tr data-row="1">
 <td><code>dhcpLease</code></td>
 <td><span class="tpill tpill-inteiro">Inteiro</span> (u32)</td>
-<td>In Minutes <span class="en-badge" title="Descrição disponível apenas em inglês">EN</span></td>
+<td>In Minutes</td>
 <td>—</td>
 <td>—</td>
 </tr>
@@ -9360,7 +9346,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
 </div>
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-wificonfig-client1" open>
+<details class="mod-card lvl-1" id="cfg-wificonfig-client1">
   <summary>
     <span class="mod-num">12.4</span>
     <span class="mod-name"><code>wifiConfig.client1</code></span>
@@ -9536,7 +9522,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
 </tbody>
 </table></div>
     
-    <div class="mod-children"><details class="mod-card lvl-1" id="cfg-beacons-manufacture" open>
+    <div class="mod-children"><details class="mod-card lvl-1" id="cfg-beacons-manufacture">
   <summary>
     <span class="mod-num">13.1</span>
     <span class="mod-name"><code>beacons.manufacture</code></span>
@@ -9638,7 +9624,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-beacons-area" open>
+<details class="mod-card lvl-1" id="cfg-beacons-area">
   <summary>
     <span class="mod-num">13.2</span>
     <span class="mod-name"><code>beacons.area</code></span>
@@ -9740,7 +9726,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-beacons-id" open>
+<details class="mod-card lvl-1" id="cfg-beacons-id">
   <summary>
     <span class="mod-num">13.3</span>
     <span class="mod-name"><code>beacons.id</code></span>
@@ -9842,7 +9828,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-beacons-productbeacon" open>
+<details class="mod-card lvl-1" id="cfg-beacons-productbeacon">
   <summary>
     <span class="mod-num">13.4</span>
     <span class="mod-name"><code>beacons.productBeacon</code></span>
@@ -9986,7 +9972,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-beacons-scan" open>
+<details class="mod-card lvl-1" id="cfg-beacons-scan">
   <summary>
     <span class="mod-num">13.5</span>
     <span class="mod-name"><code>beacons.scan</code></span>
@@ -10046,7 +10032,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-beacons-transmission" open>
+<details class="mod-card lvl-1" id="cfg-beacons-transmission">
   <summary>
     <span class="mod-num">13.6</span>
     <span class="mod-name"><code>beacons.transmission</code></span>
@@ -10113,7 +10099,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-beacons-mask" open>
+<details class="mod-card lvl-1" id="cfg-beacons-mask">
   <summary>
     <span class="mod-num">13.7</span>
     <span class="mod-name"><code>beacons.mask</code></span>
@@ -10356,7 +10342,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
 </tbody>
 </table></div>
     
-    <div class="mod-children"><details class="mod-card lvl-1" id="cfg-route-eventsmask" open>
+    <div class="mod-children"><details class="mod-card lvl-1" id="cfg-route-eventsmask">
   <summary>
     <span class="mod-num">15.1</span>
     <span class="mod-name"><code>route.eventsMask</code></span>
@@ -10493,7 +10479,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-route-eventsdvrrequest" open>
+<details class="mod-card lvl-1" id="cfg-route-eventsdvrrequest">
   <summary>
     <span class="mod-num">15.2</span>
     <span class="mod-name"><code>route.eventsDvrRequest</code></span>
@@ -10627,7 +10613,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
 </tbody>
 </table></div>
     
-    <div class="mod-children"><details class="mod-card lvl-2" id="cfg-route-eventsdvrrequest-tripstarted" open>
+    <div class="mod-children"><details class="mod-card lvl-2" id="cfg-route-eventsdvrrequest-tripstarted">
   <summary>
     <span class="mod-num">15.2.1</span>
     <span class="mod-name"><code>route.eventsDvrRequest.tripStarted</code></span>
@@ -10643,7 +10629,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
 </div>
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-route-timedifflevel" open>
+<details class="mod-card lvl-1" id="cfg-route-timedifflevel">
   <summary>
     <span class="mod-num">15.3</span>
     <span class="mod-name"><code>route.timeDiffLevel</code></span>
@@ -10689,7 +10675,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-route-eventsblockqty" open>
+<details class="mod-card lvl-1" id="cfg-route-eventsblockqty">
   <summary>
     <span class="mod-num">15.4</span>
     <span class="mod-name"><code>route.eventsBlockQty</code></span>
@@ -10826,7 +10812,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
     
   </div>
 </details>
-<details class="mod-card lvl-1" id="cfg-route-eventsblockinterval" open>
+<details class="mod-card lvl-1" id="cfg-route-eventsblockinterval">
   <summary>
     <span class="mod-num">15.5</span>
     <span class="mod-name"><code>route.eventsBlockInterval</code></span>
@@ -10995,7 +10981,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
 </tbody>
 </table></div>
     
-    <div class="mod-children"><details class="mod-card lvl-1" id="cfg-accessories-connectiontimeout" open>
+    <div class="mod-children"><details class="mod-card lvl-1" id="cfg-accessories-connectiontimeout">
   <summary>
     <span class="mod-num">16.1</span>
     <span class="mod-name"><code>accessories.connectionTimeout</code></span>
@@ -11091,28 +11077,28 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
 <tr data-row="1">
 <td><code>protoCreateInfo</code></td>
 <td><span class="tpill tpill-estrutura">Estrutura</span> — ver <a href="#cfg-version-protocreateinfo">version.protoCreateInfo</a> (seção 18.1)</td>
-<td>Protobuf version - information - from platform <span class="en-badge" title="Descrição disponível apenas em inglês">EN</span></td>
+<td>Protobuf version - information - from platform</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr data-row="1">
 <td><code>protoReceiveInfo</code></td>
 <td><span class="tpill tpill-estrutura">Estrutura</span> — ver <a href="#cfg-version-protocreateinfo">version.protoCreateInfo</a> (seção 18.1)</td>
-<td>Protobuf version - information - from hardware <span class="en-badge" title="Descrição disponível apenas em inglês">EN</span></td>
+<td>Protobuf version - information - from hardware</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr data-row="1">
 <td><code>firmwareReceiveInfo</code></td>
 <td><span class="tpill tpill-estrutura">Estrutura</span> — ver <a href="#cfg-version-protocreateinfo">version.protoCreateInfo</a> (seção 18.1)</td>
-<td>Firmware version - from hardware <span class="en-badge" title="Descrição disponível apenas em inglês">EN</span></td>
+<td>Firmware version - from hardware</td>
 <td>—</td>
 <td>—</td>
 </tr>
 </tbody>
 </table></div>
     
-    <div class="mod-children"><details class="mod-card lvl-1" id="cfg-version-protocreateinfo" open>
+    <div class="mod-children"><details class="mod-card lvl-1" id="cfg-version-protocreateinfo">
   <summary>
     <span class="mod-num">18.1</span>
     <span class="mod-name"><code>version.protoCreateInfo</code></span>
@@ -11134,35 +11120,35 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
 <tr data-row="1">
 <td><code>major</code></td>
 <td><span class="tpill tpill-inteiro">Inteiro</span> (s32)</td>
-<td>Major <span class="en-badge" title="Descrição disponível apenas em inglês">EN</span></td>
+<td>Major</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr data-row="1">
 <td><code>minor</code></td>
 <td><span class="tpill tpill-inteiro">Inteiro</span> (s32)</td>
-<td>Minor <span class="en-badge" title="Descrição disponível apenas em inglês">EN</span></td>
+<td>Minor</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr data-row="1">
 <td><code>patch</code></td>
 <td><span class="tpill tpill-inteiro">Inteiro</span> (s32)</td>
-<td>Patch <span class="en-badge" title="Descrição disponível apenas em inglês">EN</span></td>
+<td>Patch</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr data-row="1">
 <td><code>gitHash</code></td>
 <td><span class="tpill tpill-inteiro">Inteiro</span> (u64)</td>
-<td>GitHash <span class="en-badge" title="Descrição disponível apenas em inglês">EN</span></td>
+<td>GitHash</td>
 <td>—</td>
 <td>—</td>
 </tr>
 <tr data-row="1">
 <td><code>build</code></td>
 <td><span class="tpill tpill-inteiro">Inteiro</span> (u64)</td>
-<td>Build Date <span class="en-badge" title="Descrição disponível apenas em inglês">EN</span></td>
+<td>Build Date</td>
 <td>—</td>
 <td>—</td>
 </tr>
@@ -12714,7 +12700,7 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
 <tr data-row="1">
 <td>0</td>
 <td><code>LST_IDLE</code></td>
-<td>Standby, RX OFF <span class="en-badge" title="Descrição disponível apenas em inglês">EN</span></td>
+<td>Standby, RX OFF</td>
 </tr>
 <tr data-row="1">
 <td>1</td>
