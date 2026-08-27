@@ -1,4 +1,4 @@
-<title>MXT130v2</title>
+<title>MXT130v2 — Notas de versão</title>
 <style>
   /* ---------- Montserrat: tipografia padrão da marca (Brandbook, cap. 4) ---------- */
   @font-face {
@@ -539,6 +539,69 @@
   .resource-link .arrow { transition: transform .15s ease; }
   .resource-link:hover .arrow { transform: translateX(3px); }
 </style>
+<style>
+  .changelog {
+    display: flex;
+    flex-direction: column;
+    max-width: 78ch;
+  }
+
+  .release {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .release:first-child { padding-top: 0; }
+  .release:last-child { border-bottom: none; }
+
+  .release-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .release-version {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .release-date {
+    font-size: 0.8125rem;
+    color: var(--ink-3);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .release-badge {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--warm-text);
+    background: var(--surface-2);
+    border-radius: var(--r);
+    padding: 2px 8px;
+  }
+
+  .release ul {
+    margin: 0;
+    padding-left: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    color: var(--ink-2);
+    font-size: 0.875rem;
+  }
+
+  .release ul li::marker { color: var(--orange); }
+
+  .back-link { margin-bottom: 4px; }
+</style>
 <div class="wrap">
 
   <header class="masthead">
@@ -546,43 +609,1249 @@
     <img class="logo logo-dark" src="data:image/png;base64,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" alt="Maxtrack" width="448" height="97">
     <div class="brand-rule" aria-hidden="true"><i></i><i></i><i></i></div>
     <p class="eyebrow">Rastreador MXT130v2</p>
-    <h1>Recursos do MXT130v2</h1>
+    <h1>Notas de versão</h1>
     <p class="lede">
-      Acesse as ferramentas e a documentação oficial do MXT130v2.
+      Histórico de versões do firmware do MXT130v2.
     </p>
   </header>
 
-  <div class="resources">
+  <a class="resource-link secondary back-link" href="index.html">
+    <span class="arrow" aria-hidden="true">&larr;</span> Voltar para os recursos
+  </a>
 
-    <section class="card">
-      <div class="card-head">
-        <h2>Guia de configuração</h2>
-        <p>Passo a passo para configurar o MXT130v2 antes da instalação em campo.</p>
-      </div>
-      <a class="resource-link" href="config.html">
-        Abrir guia <span class="arrow" aria-hidden="true">&rarr;</span>
-      </a>
-    </section>
+  <div class="changelog">
 
-    <section class="card">
-      <div class="card-head">
-        <h2>Datasheet do produto</h2>
-        <p>Baixe o datasheet completo do MXT130v2 em PDF, com especificações técnicas.</p>
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 4.4.x</p>
+        <span class="release-badge">EM HOMOLOGAÇÃO</span>
       </div>
-      <a class="resource-link secondary" href="docs/datasheet.pdf" download>
-        Baixar Datasheet <span class="arrow" aria-hidden="true">&darr;</span>
-      </a>
-    </section>
+      <ul>
+        <li>Inclusão da nova interface CAN (reescrita do módulo e melhorias no processamento)</li>
+        <li>Inclusão da requisição e recebimento da assinatura de barramento CAN (via MAXIO)</li>
+        <li>Inclusão do suporte a múltiplas conexões Bluetooth (BLE) simultâneas</li>
+        <li>Inclusão do reporte do beacon BLE como acessório (eventos de conexão/desconexão)</li>
+        <li>Inclusão do comando de login como passageiro</li>
+        <li>Correção do reporte de UserID (ampliado de 32 para 64 bits)</li>
+        <li>Inclusão do novo modo de ignição por detecção de motor (IGNMD_ENGINE)</li>
+        <li>Inclusão da recalibração adaptativa da ignição virtual (janela deslizante) para compensar a deriva/envelhecimento da bateria</li>
+        <li>Correção dos alarmes de aceleração/frenagem (uso do limiar de inatividade da curva brusca para todos os eventos)</li>
+        <li>Inclusão da leitura do painel solar nas Ações Embarcadas</li>
+        <li>Inclusão do SMS como fonte de acionamento de controle de saída</li>
+        <li>Inclusão do estado de energia do modem na pilha LoRa</li>
+        <li>Inclusão do reporte de APN no status e do evento de mudança de APN</li>
+        <li>Inclusão da configuração para resetar o equipamento em caso de falha de conexão</li>
+        <li>Retorno do modem ao low power quando o intervalo de posição é 0</li>
+        <li>Inclusão da configuração de velocidade de carga do carregador de bateria</li>
+        <li>Correção do carregador de bateria que em algumas situações não iniciava a carga (re-arma quando preso no estado &quot;não carregando&quot;)</li>
+        <li>Melhorias no modo low power ao remover a alimentação externa</li>
+        <li>Melhorias na precisão do intervalo de posição.</li>
+        <li>Inclusão do salvamento e carregamento do último arquivo de perfil (garante aplicação de novas configurações após atualização de firmware)</li>
+        <li>Diversas melhorias de estabilidade</li>
+      </ul>
+    </article>
 
-    <section class="card">
-      <div class="card-head">
-        <h2>Notas de versão</h2>
-        <p>Veja o histórico de versões do firmware do MXT130v2.</p>
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.7.6</p>
+        <span class="release-date">10/03/2026</span>
       </div>
-      <a class="resource-link secondary" href="releaseNotes.html">
-        Ver notas de versão <span class="arrow" aria-hidden="true">&rarr;</span>
-      </a>
-    </section>
+      <ul>
+        <li>Inclusão da funcionalidade de envio de arquivos via LoraActions</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.7.6</p>
+        <span class="release-date">13/02/2026</span>
+      </div>
+      <ul>
+        <li>Correção do estado final dos comandos de saída temporizadas</li>
+        <li>Inclusão do reporte de beacons BLE como acessórios</li>
+        <li>Correção do reporte do UserID para valores maiores que 32bits.</li>
+        <li>Inclusão da ação de reset do equipamento via Ação Embarcada</li>
+        <li>Sincronismo das melhorias e correções da versão 6.2.x do MTC800 (Ações Embarcadas, Downloader, ..)</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.5.40</p>
+        <span class="release-date">12/08/2026</span>
+      </div>
+      <ul>
+        <li>Adicionado proteção contra ações embarcadas que ultrapassam o limite suportado pelo equipamento.</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.5.39</p>
+        <span class="release-date">09/07/2026</span>
+      </div>
+      <ul>
+        <li>Correção da precisão do duty cycle das saídas PWM em regiões com sinal GPRS/4G fraco.</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.5.38</p>
+        <span class="release-date">01/07/2026</span>
+      </div>
+      <ul>
+        <li>Adição dos dados de velocidade inicial e final para eventos de curvas</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.5.37</p>
+        <span class="release-date">08/05/2026</span>
+      </div>
+      <ul>
+        <li>Correção no envio de pacotes P2P quando ocorre falha na conexão GPRS/4G durante operação em modo LowPower.</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.5.36</p>
+        <span class="release-date">05/05/2026</span>
+      </div>
+      <ul>
+        <li>Adicionada proteção para desativar o trace quando a RS232 é desligada via power modules, evitando acionamento indevido do watchdog.</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.5.35</p>
+        <span class="release-date">04/05/2026</span>
+      </div>
+      <ul>
+        <li>Melhorias no decode de bibliotecas CAN (avaliar limite de infoCode suportado pelo equipamento)</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.5.34</p>
+        <span class="release-date">29/04/2026</span>
+      </div>
+      <ul>
+        <li>Melhorias na aplicação de perfil no processo produtivo</li>
+        <li>Correção do intervalo de reporte de posição após reset</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.5.33</p>
+        <span class="release-date">26/01/2026</span>
+      </div>
+      <ul>
+        <li>Correção no intervalo de reporte de posição dos modelos MXT-130T (gateways lora)</li>
+        <li>Melhorias no processamento de saídas temporizadas (timers, pwm, etc..)</li>
+        <li>Correção da perda do baudrate configurado da saída RS232.</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.5.32</p>
+        <span class="release-date">26/12/2025</span>
+      </div>
+      <ul>
+        <li>Correção na geração de eventos de aceleração e freada brusca.</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.5.30</p>
+        <span class="release-date">10/11/2025</span>
+      </div>
+      <ul>
+        <li>Melhorias no tratamento da sequencia de comandos LoRa no modo Gateway (arquivo de LoraActions e redirecionamento de comandos)</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.5.28</p>
+        <span class="release-date">31/10/2025</span>
+      </div>
+      <ul>
+        <li>Melhorias no tratamento de falhas de conexão GPRS/4G</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.5.27</p>
+        <span class="release-date">29/10/2025</span>
+      </div>
+      <ul>
+        <li>Inclusão de comando maxpb para iniciar Bluetooth</li>
+        <li>Melhorias no reporte pacotes blackBox em caso de falha</li>
+        <li>Melhorias da rotina de analise da saúde da conexão GPRS/4G</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.5.26</p>
+        <span class="release-date">24/10/2025</span>
+      </div>
+      <ul>
+        <li>Inclusão de eventos para Beacons Bluetooth</li>
+        <li>Permitir biblioteca de REGIONS utilizar o espaço de FENCES quando esta não está sendo utilizada</li>
+        <li>Melhorias no processamento de saídas temporizadas (timers, pwm, etc..)</li>
+        <li>Inclusão de dados de diagnotisco no pacote de status (Apn, memória ram e uso de biblioteca de regiões geográficas)</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.5.25</p>
+        <span class="release-date">08/10/2025</span>
+      </div>
+      <ul>
+        <li>Aumento da estrutura de amostras de velocidade para eventos de telemetria (130 + maxio)</li>
+        <li>Correção de eventos de logoff de passageiros via RFID</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.5.24</p>
+        <span class="release-date">03/10/2025</span>
+      </div>
+      <ul>
+        <li>Inclusão do parametro para ligar bluetooth via ação embarcada (prioridade sobre a configuração de power modules)</li>
+        <li>Inclusão do parametro para iniciar e finalizar viagens via ação embarcada</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.5.23</p>
+        <span class="release-date">20/09/2025</span>
+      </div>
+      <ul>
+        <li>Correção da inicialização da biblioteca CAN para o hardware MXT-130C</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.5.22</p>
+        <span class="release-date">17/09/2025</span>
+      </div>
+      <ul>
+        <li>Correção multiplos login/logout em login realizados via rfid + maxio</li>
+        <li>Persistencia dos dados de Tipo de Estado Operacional</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.5.21</p>
+        <span class="release-date">16/09/2025</span>
+      </div>
+      <ul>
+        <li>Melhorias na rotina de leitura de temperatura interna (resolve alguns resets indesejados)</li>
+        <li>Correção do estado de lowPower e emergencia por alimentação externa durante inicialização do equipamento</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.5.20</p>
+        <span class="release-date">15/09/2025</span>
+      </div>
+      <ul>
+        <li>Melhorias do modo low power quando alimentação externa for removida</li>
+        <li>Correção da perda de alguns segudos de pacotes BlackBox</li>
+        <li>Inclusão da configuração de lista de APN com base no ICCID do simcard</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.5.19</p>
+        <span class="release-date">26/08/2025</span>
+      </div>
+      <ul>
+        <li>Correção da perda dos dados de despacho após um reset do equipamento.</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.5.17</p>
+        <span class="release-date">26/08/2025</span>
+      </div>
+      <ul>
+        <li>Inclusão do novo pacote de posição LoRa com &quot;feature&quot; e &quot;estado operacional&quot;</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.5.16</p>
+        <span class="release-date">14/08/2025</span>
+      </div>
+      <ul>
+        <li>Melhorias no algoritmo de detecção de jammer</li>
+        <li>Inclusão da configuração para forçar modo low power quando alimentação externa for removida</li>
+        <li>Melhorias Login de varios passageiros via RFID (cadastrados ou não na biblioteca)</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.5.14</p>
+        <span class="release-date">07/08/2025</span>
+      </div>
+      <ul>
+        <li>Correção dos resets por falha de memória</li>
+        <li>Melhorias no algoritmo de detecção de jammer</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.5.13</p>
+        <span class="release-date">04/07/2025</span>
+      </div>
+      <ul>
+        <li>Melhorias na entrada e saída do modo estoque</li>
+        <li>Melhorias no reporte em modo econômico (130T/162(S))</li>
+        <li>Correção do reenvio de LoraCommands e validação do numero de sequencia (LoRa P2P)</li>
+        <li>Correção do Login via RFID quando usuário não está cadastrado na lista de usuários</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.5.11</p>
+        <span class="release-date">17/06/2025</span>
+      </div>
+      <ul>
+        <li>Inclusão do estado do MAXIO para ACCESSORY_STATE nas ações embarcadas</li>
+        <li>Correção BlackBox para pacotes maiores que 1300 bytes</li>
+        <li>Melhorias nos testes de fábrica</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.5.10</p>
+        <span class="release-date">11/06/2025</span>
+      </div>
+      <ul>
+        <li>130T - Melhorias na detecção de alimentação solar</li>
+        <li>Inclusão de login de vários passageiros por RFID</li>
+        <li>Melhorias no algoritmo de detecção de jammer quando em low power</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.5.9</p>
+        <span class="release-date">26/05/2025</span>
+      </div>
+      <ul>
+        <li>Melhorias teste de watchDog na fábrica</li>
+        <li>Melhorias comandos AT customizados para modem</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.5.8</p>
+        <span class="release-date">19/05/2025</span>
+      </div>
+      <ul>
+        <li>130T - Alimentação solar para saída do modo estoque</li>
+        <li>Correção da inicialização da biblioteca CAN</li>
+        <li>Correção eventos MAXIO após retornar de sleep</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.5.7</p>
+        <span class="release-date">14/05/2025</span>
+      </div>
+      <ul>
+        <li>Inclusão flag emergência nas ações embarcadas</li>
+        <li>Remoção do envio de status para solicitar arquivo AGPS</li>
+        <li>Melhorias atualização do firmware de modem</li>
+        <li>Melhorias no ajuste de data e hora</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.5.6</p>
+        <span class="release-date">05/05/2025</span>
+      </div>
+      <ul>
+        <li>Correção do recarregamento das bibliotecas de pontos embarcados</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.5.5</p>
+        <span class="release-date">28/04/2025</span>
+      </div>
+      <ul>
+        <li>Inclusão de deltas customizados acionados pela Ação Embarcadas</li>
+        <li>Melhorias calculo de deltas quando ocorre um ajuste de data/hora</li>
+        <li>Melhoria de estabilidade no modo Teste (fabrica)</li>
+        <li>Inclusão a atualização do firmware do modem via transferência de arquivos</li>
+        <li>Melhorias diversas de estabilidade</li>
+        <li>Inclusão da configuração &quot;mode&quot; para coleta de Log/Trace</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.4.18</p>
+        <span class="release-date">14/03/2025</span>
+      </div>
+      <ul>
+        <li>MXT130T - Melhorias diversas de estabilidade</li>
+        <li>Inclusão da configuração para descarregar somente o ultimo pacote p2p recebido quando sem conexão 4G/GPRS</li>
+        <li>MXT130T - Correção do travamento em modo econômico</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.4.17</p>
+        <span class="release-date">18/02/2025</span>
+      </div>
+      <ul>
+        <li>Correção do comando de acerto de data/hora</li>
+        <li>Melhorias no reporte dos dados do MAXIO</li>
+        <li>Inclusão do conceito de periféricos para entradas e saídas do MAXIO</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.4.16</p>
+        <span class="release-date">10/02/2025</span>
+      </div>
+      <ul>
+        <li>Inclusão da configuração de lista de APN com base no IMSI do simcard</li>
+        <li>Inclusão do login de usuário via comando com token</li>
+        <li>Melhorias no salvamento dos registradores das ações embarcadas</li>
+        <li>Melhorias no reporte dos dados do MAXIO</li>
+        <li>Inclusão dos estados da saídas do MAXIO nas ações embarcadas</li>
+        <li>MXT130T - Melhorias no reporte de pacotes em modo econômico (bateria, sem alimentação externa)</li>
+        <li>Correção do debounce de movimento quando em modo econômico</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.4.14</p>
+        <span class="release-date">16/01/2025</span>
+      </div>
+      <ul>
+        <li>MXT130T - Correção do modo sleep, redução do consumo entre duas transmissões</li>
+        <li>MXT130T - Melhorias no reporte de pacotes em modo econômico (bateria, sem alimentação externa)</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.4.13</p>
+        <span class="release-date">14/01/2025</span>
+      </div>
+      <ul>
+        <li>Inclusão do novo protocolo de SMS (alteração de perfil)</li>
+        <li>Correção do valor de consumo de combustível no delta</li>
+        <li>Correção da indicação de faixa azul de rpm</li>
+        <li>Adicionar configuração para desativar emergência quando alimentação externa for reestabelecida</li>
+        <li>Correção de emergência sendo desativada mesmo quando alimentação externa ausente (se configurado)</li>
+        <li>Correção do estado inicial da saída quando em estado BLOCKED</li>
+        <li>Inclusão do backup e restauração das configurações de conectividade (APN e Endereço do Gateway)</li>
+        <li>Permitir alteração de senha do dispositivo caso comando seja por canal seguro</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.4.12</p>
+        <span class="release-date">11/12/2024</span>
+      </div>
+      <ul>
+        <li>Correção de possível falha ao carregar registradores das ações embarcadas</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.4.11</p>
+        <span class="release-date">04/12/2024</span>
+      </div>
+      <ul>
+        <li>Validar também ID do arquivo, além do CRC e tipo de arquivo em um comando de novo download</li>
+        <li>Aumento do tamanho do buffer para transferência de arquivos</li>
+        <li>Correção do processamento da biblioteca de pontos ao remover o arquivo</li>
+        <li>Correção do processamento para recebimento de múltiplos comandos de transferência de arquivo</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.4.10</p>
+        <span class="release-date">13/11/2024</span>
+      </div>
+      <ul>
+        <li>Inclusão do teste de wifi para produção</li>
+        <li>Melhoria no reporte de dados de telemetria quando não tem CAN disponível</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.4.9</p>
+        <span class="release-date">28/10/2024</span>
+      </div>
+      <ul>
+        <li>Correção do ajuste de data/hora via NTP</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.4.8</p>
+        <span class="release-date">21/10/2024</span>
+      </div>
+      <ul>
+        <li>Melhorias no processamento da biblioteca GeoLib diretamente na flash (economia de memória RAM)</li>
+        <li>Criação de portas exclusivas wifi para Aplicativo DriverUI e outra para Flow</li>
+        <li>MXT130T - Correção dos eventos de reconstrução</li>
+        <li>MXT130T - Melhorias de consumo em modo sleep</li>
+        <li>Incluído contador de dados trafegados via GPRS/4G e SMS</li>
+        <li>Correção do recebimento de pacotes de status via P2P</li>
+        <li>Melhorias diversas de conexão com aplicativo DriverUI</li>
+        <li>Melhorias diversas de estabilidade</li>
+        <li>Correção do processamento das respostas dos comandos roteados</li>
+        <li>Inclusão da configuração dos servidores NTP</li>
+        <li>Correção da falha de watchDog devido a problema de enumeração USB do modem</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.3.28</p>
+        <span class="release-date">12/09/2024</span>
+      </div>
+      <ul>
+        <li>Inclusão do teste de wifi para produção</li>
+        <li>Melhoria no reporte de dados de telemetria quando não tem CAN disponível</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.3.26</p>
+        <span class="release-date">12/09/2024</span>
+      </div>
+      <ul>
+        <li>Implemetaçao testes de produção para MXT-130CR (Can) e MXT-130TS (Solar)</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.3.25</p>
+        <span class="release-date">03/09/2024</span>
+      </div>
+      <ul>
+        <li>Correção do intervalo de transmissão quando low power é iniciado</li>
+        <li>MXT130-TS - Correção entrada sleep quando intervalo de low power é curto (menor que 90 segundos)</li>
+        <li>Correção recebimento de SMS quando em modo Low Power</li>
+        <li>Inclusão de comando maxpb para ajuste de data e hora</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.3.24</p>
+        <span class="release-date">20/08/2024</span>
+      </div>
+      <ul>
+        <li>Inclusão da configuração de filtro p2p para pacotes em emergencia e com flag de jammer ativa</li>
+        <li>Melhorias no ajuste de data/hora</li>
+        <li>Correção da reconstrução do MXT-130T e MTX-130TS</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.3.23</p>
+        <span class="release-date">25/07/2024</span>
+      </div>
+      <ul>
+        <li>Melhorias modo estoque (necessário manter alimentação externa para sair do modo)</li>
+        <li>Correção da aplicação da senha do equipamento</li>
+        <li>Melhorias cálculo de odômetro em modo econômico (MXT130T/TS)</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.3.21</p>
+        <span class="release-date">03/07/2024</span>
+      </div>
+      <ul>
+        <li>Melhorias na conexão wifi com aplicativo Android DriverUI</li>
+        <li>MXT130-TS - Melhorias carregamento de bateria quando em modo econômico</li>
+        <li>Correção do estado inicial da saída quando configurada como invertida</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.3.19</p>
+        <span class="release-date">27/06/2024</span>
+      </div>
+      <ul>
+        <li>Mudança dos valores default dos Custom Power Modules</li>
+        <li>Melhorias nas condições de wakeup do MXT-130T e MXT-130TS</li>
+        <li>Melhorias no reporte do status da conexão WIFI</li>
+        <li>Chaveamento automático entre WIFI e GRPS/4G</li>
+        <li>Ativação automática da coleta de trace via aplicativo MxtRemote</li>
+        <li>Correção no reporte de eventos de modo sleep</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.3.18</p>
+        <span class="release-date">06/06/2024</span>
+      </div>
+      <ul>
+        <li>Melhorias teste de fabrica (transferencia de arquivos em modo teste)</li>
+        <li>Melhorias na transferencia de arquivos entre MXT130 e aplicativo DriverUI</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.3.17</p>
+        <span class="release-date">24/05/2024</span>
+      </div>
+      <ul>
+        <li>Redução do consumo em modo estoque</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.3.16</p>
+        <span class="release-date">21/05/2024</span>
+      </div>
+      <ul>
+        <li>Melhorias para testes de fábrica</li>
+        <li>Inclusão da configuração dos intervalos de transmissão LoRaWAN via ação embarcada.</li>
+        <li>Correção da perda do valor do consumo recebido da CAN</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.3.15</p>
+        <span class="release-date">16/05/2024</span>
+      </div>
+      <ul>
+        <li>Correção da perda de perfil após o envio do comando default seguido de um comando de reset</li>
+        <li>Melhorias para testes de fábrica (teste GPS)</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.3.14</p>
+        <span class="release-date">13/05/2024</span>
+      </div>
+      <ul>
+        <li>Correção da aplicação do perfil padrão</li>
+        <li>Melhorias para testes de fábrica</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.3.13</p>
+        <span class="release-date">09/05/2024</span>
+      </div>
+      <ul>
+        <li>Melhoria no teste de fábrica (estado da bateria)</li>
+        <li>Redução do tempo para enviar pacotes LoRa quando perder conexão GPRS/4G</li>
+        <li>Diferenciação de modelos diferentes de modem conforme device type (MXT-130M)</li>
+        <li>Versão inicial do modo de segurança (quando o equipamento reiniciar 3 vezes seguidas pelo mesmo motivo de falha)</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.3.12</p>
+        <span class="release-date">02/05/2024</span>
+      </div>
+      <ul>
+        <li>Inclusão do modo contador de pulsos para as entradas</li>
+        <li>Inclusão da configuração de senha para comunicação WIFI, BLE, SMS e RS232</li>
+        <li>Inclusão da segunda área de ações embarcadas (ações embarcadas internas)</li>
+        <li>Melhorias na integração do aplicativio DriverUI Android</li>
+        <li>Correção de eventos de fuga de rota</li>
+        <li>Inclusão do modo baixo consumo Gateway LoRa P2P</li>
+        <li>Inclusão da configuração de comandos AT customizados para modem</li>
+        <li>Inclusão da flag de instalação</li>
+        <li>Inclusão do recebimento de mensagens de Dados Livres através do MAXIO</li>
+        <li>Melhorias no modo econômico (MXT130T/TS)</li>
+        <li>Inclusão de comando para solicitar posição SMS</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.2.19</p>
+        <span class="release-date">02/05/2024</span>
+      </div>
+      <ul>
+        <li>Correção de descarga de pacotes BlackBox</li>
+        <li>Correção no processo de gravação de ID</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.2.18</p>
+        <span class="release-date">24/04/2024</span>
+      </div>
+      <ul>
+        <li>Correção de possíveis resets indesejados</li>
+        <li>Melhorias no salvamento e leitura de pacotes LoRa Gateway e Blackbox</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.2.17</p>
+        <span class="release-date">11/04/2024</span>
+      </div>
+      <ul>
+        <li>Inclusão do comando para requisitar sms position (envio sms para numero configurado)</li>
+        <li>Melhorias no processamento da biblioteca de pontos embarcados</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.2.16</p>
+        <span class="release-date">03/04/2024</span>
+      </div>
+      <ul>
+        <li>Melhorias testes de fábrica (testes de entradas e saídas)</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.2.14</p>
+        <span class="release-date">28/03/2024</span>
+      </div>
+      <ul>
+        <li>Correção reconexão wifi</li>
+        <li>Correção recarregamento da biblioteca de pontos embarcados</li>
+        <li>Melhorias no ajuste e sincronismo de data/hora (NTP)</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.2.13</p>
+        <span class="release-date">22/03/2024</span>
+      </div>
+      <ul>
+        <li>Correção testes de fábrica (aplicação de perfil)</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.2.12</p>
+        <span class="release-date">18/03/2024</span>
+      </div>
+      <ul>
+        <li>Melhorias algoritmo de detecção da jammer</li>
+        <li>Correção comando solicitar posições antigas</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.2.7</p>
+        <span class="release-date">14/03/2024</span>
+      </div>
+      <ul>
+        <li>Correção testes de fábrica (Entradas e Saídas, versão de modem)</li>
+        <li>Correções de perda de horário quando em modo sleep e sem GPS disponível</li>
+        <li>Melhorias no modo econômico (MXT130T/TS)</li>
+        <li>Gateway P2P - Implementado funcionalidade de filtrar somente os dispositivos da lista</li>
+        <li>Reporte P2P do estado da saída bloqueada como HIGH</li>
+        <li>Incluído tratativas de erros quando comunicação lora é interrompida</li>
+        <li>Melhorias diversas de desempenho/processamento</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.2.0</p>
+        <span class="release-date">14/02/2024</span>
+      </div>
+      <ul>
+        <li>Incluído ação embarcada OUTPUT_CYCLE para comandar saídas do MAXIO</li>
+        <li>Incluído suporte aos &quot;Customs Power Modules&quot;</li>
+        <li>Incluído suporte ao tipo de periférico e nome para as entradas e saídas</li>
+        <li>Incluído CCCD (Client Characteristic Configuration Descriptor) na característica principal do BLE</li>
+        <li>Incluído comando para configurar contadores LoRaWAN</li>
+        <li>Correção da execução das Ações Embarcadas quando Blackbox habilitado</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.1.11</p>
+        <span class="release-date">12/03/2024</span>
+      </div>
+      <ul>
+        <li>Melhoria flag de jammer quando possui conexão GPRS/4G válida</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.1.10</p>
+        <span class="release-date">01/03/2024</span>
+      </div>
+      <ul>
+        <li>Melhorias teste de fábrica</li>
+        <li>Correção resets quando ignição configurada como Virtual</li>
+        <li>Melhoria no modo sleep quando sem horário válido</li>
+        <li>Correção MXT130T quando movendo sem alimentação externa</li>
+        <li>Melhorias no tratamento de erros do rádio lora</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.1.8</p>
+        <span class="release-date">16/02/2024</span>
+      </div>
+      <ul>
+        <li>Correção teste de fábrica para MXT-131</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.1.7</p>
+        <span class="release-date">08/02/2024</span>
+      </div>
+      <ul>
+        <li>Correção da transferência de firmware para dispositivos A40</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.1.6</p>
+        <span class="release-date">07/02/2024</span>
+      </div>
+      <ul>
+        <li>Inclusão de trocar de mensagens via aplicativo DriverUI</li>
+        <li>Correção dos contadores LoRaWAN</li>
+        <li>Correção da transferência de firmware para dispositivos A40</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.1.5</p>
+        <span class="release-date">01/02/2024</span>
+      </div>
+      <ul>
+        <li>Inclusão da configuração de mascara para log/trace</li>
+        <li>Correção de entrada em sleep quando lora desligado</li>
+        <li>Correção transferência de firmware via Bluetooth</li>
+        <li>Correção estado inicial das saídas</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 3.1.3</p>
+        <span class="release-date">24/01/2024</span>
+      </div>
+      <ul>
+        <li>Suporte a conexão com aplicativo DriverUI</li>
+        <li>Suporte a biblioteca de Rotas e Viagens</li>
+        <li>Incluído watchDog para maquina de estados Lora</li>
+        <li>Correção de quantidade de itens suportados pela biblioteca de Georeferencia</li>
+        <li>Melhoria da estabilidade de biblioteca de Georeferencia</li>
+        <li>Diversas melhorias de estabilidade</li>
+        <li>Melhorias na calibração do acelerometro</li>
+        <li>Melhorias de baixo consumo</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 2.1.38</p>
+        <span class="release-date">17/01/2024</span>
+      </div>
+      <ul>
+        <li>Alterado a configuração padrão de trace para desligado</li>
+        <li>Correções na geração de pacotes de posição maiores que 1024bytes</li>
+        <li>Correção da exceção para descarga de posições</li>
+        <li>Melhorias no sistema de detecção de carreta quando em modo emergência</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 2.1.37</p>
+        <span class="release-date">10/01/2024</span>
+      </div>
+      <ul>
+        <li>130TS - Melhoria do consumo durante a inicialização</li>
+        <li>Correção de Login com bibliotecas de usuários com UserName maiores que 30 caracteres</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 2.1.36</p>
+        <span class="release-date">05/01/2024</span>
+      </div>
+      <ul>
+        <li>Correção de reconexão wifi para desconexão abrupta</li>
+        <li>130TS - Inclusão de tempo minimo e máximo de carga da bateria</li>
+        <li>Correção comandos temporizados e ciclicos para MAXIO</li>
+        <li>Correção da precisão de temporização das Ações Embarcadas</li>
+        <li>Correção de Login via RFID através do MAXIO</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 2.1.34</p>
+        <span class="release-date">27/12/2023</span>
+      </div>
+      <ul>
+        <li>Incluído status de download a cada 10%</li>
+        <li>Correção da flag para desabilitar MaxtrackCloud</li>
+        <li>130TS - Incluído histerese para carga da bateria e intervalo de verificação de carga</li>
+        <li>Melhorias na criação do socket da conexão GPRS/4G</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 2.1.33</p>
+        <span class="release-date">21/12/2023</span>
+      </div>
+      <ul>
+        <li>Inclusão do modulo de testes da alimentação solar (fábrica)</li>
+        <li>Melhorias socket wifi</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 2.1.31</p>
+        <span class="release-date">19/12/2023</span>
+      </div>
+      <ul>
+        <li>Correção dos eventos da lista de acessórios</li>
+        <li>Inclusão do trace/log via socket wifi</li>
+        <li>Correção da configuração do baudrate da porta RS232</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 2.1.30</p>
+        <span class="release-date">14/12/2023</span>
+      </div>
+      <ul>
+        <li>Otimização de uso da memória RAM</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 2.1.29</p>
+        <span class="release-date">13/12/2023</span>
+      </div>
+      <ul>
+        <li>Inclusão dos eventos de lista de acessórios</li>
+        <li>Correção no reporte de OpenData</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 2.1.28</p>
+        <span class="release-date">05/12/2023</span>
+      </div>
+      <ul>
+        <li>Incluido socket wifi (protocolo MAXPB)</li>
+        <li>Melhorias no sistema de detecção de carreta</li>
+        <li>Correção Leitura de RFID de 8 bytes</li>
+        <li>Melhorias carregamento de bateria via energia solar (MXT-130T)</li>
+        <li>Ajuste do consumo energia para MXT-130T</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 2.1.26</p>
+        <span class="release-date">05/12/2023</span>
+      </div>
+      <ul>
+        <li>Melhorias testes de fábrica (Imei do modem)</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 2.1.24</p>
+        <span class="release-date">04/12/2023</span>
+      </div>
+      <ul>
+        <li>Inclusão dos comandos de acionamento de saída via comando LoRa P2P</li>
+        <li>Correção detecção de movimento via GPS</li>
+        <li>Correção detecção de jammer quando estiver com Fix do GPS</li>
+        <li>Correção da inicialização com ignição virtual e por movimento</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 2.1.22</p>
+        <span class="release-date">29/11/2023</span>
+      </div>
+      <ul>
+        <li>Correção do estado da saída após reiniciar</li>
+        <li>Inclusão das condições de ações embarcadas para Maxio</li>
+        <li>Correção da mensagem de consumo de combustível no pacote de posição</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 2.1.20</p>
+        <span class="release-date">28/11/2023</span>
+      </div>
+      <ul>
+        <li>Melhorias no sistema de detecção de carreta</li>
+        <li>Inclusão da analise de borda para bibliotecas de Georeferência</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 2.1.17</p>
+        <span class="release-date">22/11/2023</span>
+      </div>
+      <ul>
+        <li>Correção funcionalidade MaxtrackCloud</li>
+        <li>Melhorias modo sleep</li>
+        <li>Correção download arquivo em situações conectividade ruim</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 2.1.6</p>
+        <span class="release-date">31/10/2023</span>
+      </div>
+      <ul>
+        <li>Inclusão da configuração SSID/password do Wifi</li>
+        <li>Inclusão do suporte ao serviço MaxtrackCloud</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 2.1.5</p>
+        <span class="release-date">06/10/2023</span>
+      </div>
+      <ul>
+        <li>Redução do tempo de fallback do LTE para o GPRS</li>
+        <li>Inclusão de comandos Roteados</li>
+        <li>Reinicio da calibração do acelerometro após uma reinstalação do dispositivo</li>
+        <li>Incluído suporte a atualização de firmware e perfil de A40B</li>
+        <li>Sincronismo entre dados de acelerometro, gps para calculos de telemetria</li>
+        <li>Inclusão a suporte de novos arquivos para DriverUI Android</li>
+        <li>Melhorias de consumo em modo sleep</li>
+        <li>Correção da configuração de endereço do gateway quando configurado IP fixo</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 2.1.3</p>
+        <span class="release-date">14/09/2023</span>
+      </div>
+      <ul>
+        <li>Melhorias no sistema de detecção de carreta</li>
+        <li>Melhorias de conectividade GPRS/4G	*Enviar o contexto sempre que o modem é iniciado e melhoria no tratamento de reset quando em falha de conexão</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 2.1.2</p>
+        <span class="release-date">13/09/2023</span>
+      </div>
+      <ul>
+        <li>Inclusão do Tipo de Login quando &quot;accepetAnyUser&quot; ativo</li>
+        <li>Melhorias testes fábrica (porta de debug)</li>
+        <li>Melhorias no sistema de detecção de carreta</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 2.1.1</p>
+        <span class="release-date">11/09/2023</span>
+      </div>
+      <ul>
+        <li>Melhorias testes de fabrica</li>
+        <li>Correção acionamento das saídas MXT-132</li>
+        <li>Inclusão do motivo da emergência</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 2.1.0</p>
+        <span class="release-date">08/09/2023</span>
+      </div>
+      <ul>
+        <li>Inclusão da funcionalidade de detecção de carretas (via LoRa)</li>
+        <li>Melhorias diversas telemetria</li>
+        <li>Correção falha calibração Ignição Virtual</li>
+        <li>Melhorias diversas no funcionamento do LoRa</li>
+        <li>Melhorias testes fábrica para IOs</li>
+        <li>Melhorias consumo do MXT-130T</li>
+        <li>Melhorias rotina de reset do modem quando em falha de conexão</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 2.0.14</p>
+        <span class="release-date">10/08/2023</span>
+      </div>
+      <ul>
+        <li>Inclusão a leitura de Beacons BLE (Pessoa, Beacon e Carreta)</li>
+        <li>Melhorias na funcionalidade de Sleep (consumo e wakeup)</li>
+        <li>Inclusão do pacote Lora Beacon</li>
+        <li>Suporte ao carregamento da bateria via Painel Solar (MXT130-TS)</li>
+        <li>Inclusão do valor da bateria para report SMS</li>
+        <li>Correção da ação embarcada VCC_POWER_STATUS</li>
+        <li>Melhorias diversas das rotinas de acelerômetro (idem MTC800)</li>
+        <li>Melhorias rotinas de GPS (idem MTC800)</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 1.2.7</p>
+        <span class="release-date">03/08/2023</span>
+      </div>
+      <ul>
+        <li>Melhorias testes de fábrica (Imei do modem)</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 1.2.6</p>
+        <span class="release-date">24/07/2023</span>
+      </div>
+      <ul>
+        <li>Ampliação da capacidade máxima das ações embarcadas</li>
+        <li>Correção do comando sms para ligar gps</li>
+        <li>Melhorias testes de fábrica</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 1.2.5</p>
+        <span class="release-date">21/07/2023</span>
+      </div>
+      <ul>
+        <li>Melhorias testes de fábrica</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 1.2.3</p>
+        <span class="release-date">17/07/2023</span>
+      </div>
+      <ul>
+        <li>Reporte de status depois de atualização de fw</li>
+        <li>Comandos de saída segura para SMS</li>
+        <li>Comando sms para ligar gps</li>
+        <li>Correção do acionamento das saídas do maxio</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 1.2.2</p>
+        <span class="release-date">12/07/2023</span>
+      </div>
+      <ul>
+        <li>Validação da inicialização dos registradores das Ações Embarcadas</li>
+        <li>Melhorias diversas em conectividade GPRS/LTE (protocolo IPV4)</li>
+        <li>Melhorias low power em regiões de baixa conectividade</li>
+        <li>Melhorias reporte dados Maxio</li>
+        <li>Correção do envio de configuração para Maxio</li>
+        <li>Melhorias lógica da config &quot;onlybatterymode&quot;</li>
+        <li>Correção comando para desabilitar entrada</li>
+        <li>Inclusão do acionamento de saída segura por ação embarcada</li>
+      </ul>
+    </article>
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 1.2.0</p>
+        <span class="release-date">05/07/2023</span>
+      </div>
+      <ul>
+        <li>Versão Inicial</li>
+      </ul>
+    </article>
 
   </div>
 
