@@ -600,6 +600,61 @@
 
   .release ul li::marker { color: var(--orange); }
 
+  .version-group {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .version-group:last-child { border-bottom: none; }
+
+  .version-group > summary {
+    list-style: none;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 16px 0;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .version-group > summary::-webkit-details-marker { display: none; }
+
+  .version-group > summary::before {
+    content: "";
+    flex: 0 0 auto;
+    width: 7px;
+    height: 7px;
+    margin-top: 2px;
+    border-right: 2px solid var(--ink-3);
+    border-bottom: 2px solid var(--ink-3);
+    transform: rotate(-45deg);
+    transition: transform .15s ease;
+  }
+
+  .version-group[open] > summary::before { transform: rotate(45deg); }
+
+  .version-group-label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .version-group-meta {
+    font-size: 0.8125rem;
+    color: var(--ink-3);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .version-group-body {
+    padding: 0 0 4px 17px;
+    border-left: 1px solid var(--line);
+    margin-left: 3px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .version-group-body .release:first-child { padding-top: 0; }
+  .version-group-body .release:last-child { border-bottom: none; }
+
   .back-link { margin-bottom: 4px; }
 </style>
 <div class="wrap">
@@ -620,6 +675,13 @@
   </a>
 
   <div class="changelog">
+
+    <details class="version-group" open>
+      <summary>
+        <span class="version-group-label">Versão 4.4.x</span>
+        <span class="version-group-meta">31/08/2026</span>
+      </summary>
+      <div class="version-group-body">
 
     <article class="release">
       <div class="release-head">
@@ -656,6 +718,16 @@
         <li>Sincronismo das melhorias e correções da versão 6.2.x do MTC800 (Ações Embarcadas, Downloader, ..)</li>
       </ul>
     </article>
+
+      </div>
+    </details>
+
+    <details class="version-group">
+      <summary>
+        <span class="version-group-label">Versão 3.5.x</span>
+        <span class="version-group-meta">31 versões</span>
+      </summary>
+      <div class="version-group-body">
 
     <article class="release">
       <div class="release-head">
@@ -1002,6 +1074,16 @@
       </ul>
     </article>
 
+      </div>
+    </details>
+
+    <details class="version-group">
+      <summary>
+        <span class="version-group-label">Versão 3.4.x</span>
+        <span class="version-group-meta">10 versões</span>
+      </summary>
+      <div class="version-group-body">
+
     <article class="release">
       <div class="release-head">
         <p class="release-version">Versão 3.4.18</p>
@@ -1133,6 +1215,16 @@
         <li>Correção da falha de watchDog devido a problema de enumeração USB do modem</li>
       </ul>
     </article>
+
+      </div>
+    </details>
+
+    <details class="version-group">
+      <summary>
+        <span class="version-group-label">Versão 3.3.x</span>
+        <span class="version-group-meta">14 versões</span>
+      </summary>
+      <div class="version-group-body">
 
     <article class="release">
       <div class="release-head">
@@ -1307,6 +1399,16 @@
       </ul>
     </article>
 
+      </div>
+    </details>
+
+    <details class="version-group">
+      <summary>
+        <span class="version-group-label">Versão 3.2.x</span>
+        <span class="version-group-meta">9 versões</span>
+      </summary>
+      <div class="version-group-body">
+
     <article class="release">
       <div class="release-head">
         <p class="release-version">Versão 3.2.19</p>
@@ -1414,6 +1516,16 @@
       </ul>
     </article>
 
+      </div>
+    </details>
+
+    <details class="version-group">
+      <summary>
+        <span class="version-group-label">Versão 3.1.x</span>
+        <span class="version-group-meta">7 versões</span>
+      </summary>
+      <div class="version-group-body">
+
     <article class="release">
       <div class="release-head">
         <p class="release-version">Versão 3.1.11</p>
@@ -1499,6 +1611,16 @@
         <li>Melhorias de baixo consumo</li>
       </ul>
     </article>
+
+      </div>
+    </details>
+
+    <details class="version-group">
+      <summary>
+        <span class="version-group-label">Versão 2.1.x</span>
+        <span class="version-group-meta">20 versões</span>
+      </summary>
+      <div class="version-group-body">
 
     <article class="release">
       <div class="release-head">
@@ -1746,6 +1868,16 @@
       </ul>
     </article>
 
+      </div>
+    </details>
+
+    <details class="version-group">
+      <summary>
+        <span class="version-group-label">Versão 2.0.x</span>
+        <span class="version-group-meta">1 versão</span>
+      </summary>
+      <div class="version-group-body">
+
     <article class="release">
       <div class="release-head">
         <p class="release-version">Versão 2.0.14</p>
@@ -1762,6 +1894,16 @@
         <li>Melhorias rotinas de GPS (idem MTC800)</li>
       </ul>
     </article>
+
+      </div>
+    </details>
+
+    <details class="version-group">
+      <summary>
+        <span class="version-group-label">Versão 1.2.x</span>
+        <span class="version-group-meta">6 versões</span>
+      </summary>
+      <div class="version-group-body">
 
     <article class="release">
       <div class="release-head">
@@ -1835,6 +1977,8 @@
       </ul>
     </article>
 
+      </div>
+    </details>
   </div>
 
   <footer class="footnote">
