@@ -3939,9 +3939,9 @@
 <tr data-row="1">
 <td><code>blackBoxReportTime</code></td>
 <td><span class="tpill tpill-inteiro">Inteiro</span> (u32)</td>
-<td>Tempo de reportar algo da caixa preta</td>
+<td>Tempo para reportar os dados coletados da caixa preta. <strong>⚠️ Valor em minutos, não segundos</strong> — ex.: <code>120</code> = 2 horas, não 2 minutos. Valor máximo 1440 (1 dia); valores maiores são truncados (<code>MIN(valor, 1440)</code>)</td>
 <td>60</td>
-<td>—</td>
+<td>Minutos</td>
 </tr>
 <tr data-row="1">
 <td><code>debouncePitchingRolling</code></td>
