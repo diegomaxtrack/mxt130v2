@@ -679,9 +679,25 @@
     <details class="version-group" open>
       <summary>
         <span class="version-group-label">Versão 4.4.x</span>
-        <span class="version-group-meta">31/08/2026</span>
+        <span class="version-group-meta">23/10/2026</span>
       </summary>
       <div class="version-group-body">
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 4.4.4</p>
+        <span class="release-date">23/10/2026</span>
+      </div>
+      <ul>
+        <li>Inclusão do enlace WiFi dedicado entre MTC e MXT</li>
+        <li>Inclusão do envio do NMEA report e da posição de 1 segundo ao equipamento par pelo enlace MTC-MXT</li>
+        <li>Inclusão do NMEA report do GPS, enviado somente com fix 3D</li>
+        <li>Correção da corrupção de slot dos eventos geográficos quando o buffer de eventos está cheio</li>
+        <li>Melhoria da validação das fontes de hora (GPS, rede, servidor e último report) antes de atualizar o relógio</li>
+        <li>Melhorias no WiFi quando o AP não é encontrado (redução dos scans completos e novas tentativas a cada 30 s)</li>
+        <li>Correção da inicialização do BLE quando o modo de operação é alterado com a stack já ativa</li>
+      </ul>
+    </article>
 
     <article class="release">
       <div class="release-head">
