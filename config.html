@@ -1175,10 +1175,10 @@
 <td>—</td>
 </tr>
 <tr data-row="1">
-<td><code>tcpConnectionTimeout</code></td>
-<td><span class="tpill tpill-inteiro">Inteiro</span> (u32)</td>
-<td>Seconds - Time to tracker close TCP connection by inactivity</td>
-<td>—</td>
+<td><code>enableDeviceResetWhenNoConnection</code></td>
+<td><span class="tpill tpill-booleano">Booleano</span> (0/1)</td>
+<td>Habilita o reset do equipamento quando não há conexão. Após 3 resets do modem sem conseguir conectar, com células visíveis e sinal (CSQ) acima de 5, o equipamento é reiniciado. Enquanto o modem está desligado de propósito (modo de baixo consumo), as falhas não são contadas e o equipamento não é reiniciado. 0: Desabilita; 1: Habilita</td>
+<td>1</td>
 <td>—</td>
 </tr>
 <tr data-row="1">
@@ -1822,7 +1822,14 @@
 <tr data-row="1">
 <td><code>modemCommands</code></td>
 <td><span class="tpill tpill-lista">Lista</span> de estrutura — ver <a href="#cfg-system-modemcommands">system.modemCommands</a> (seção 6.9) (máx. 5)</td>
-<td>Comandos AT para ser enviado na inicializacao do modem</td>
+<td>Formato legado dos comandos AT enviados na inicialização do modem. Use <a href="#cfg-system-modemconfig">system.modemConfig</a>. Ainda é aceito: o equipamento usa o primeiro comando de cada elemento e converte a lista para <code>modemConfig.atCommand</code></td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr data-row="1">
+<td><code>modemConfig</code></td>
+<td><span class="tpill tpill-estrutura">Estrutura</span> — ver <a href="#cfg-system-modemconfig">system.modemConfig</a> (seção 6.10)</td>
+<td>Configuração do modem</td>
 <td>—</td>
 <td>—</td>
 </tr>
@@ -3329,10 +3336,10 @@
   <summary>
     <span class="mod-num">6.9</span>
     <span class="mod-name"><code>system.modemCommands</code></span>
-    <code class="struct-name">ModemConfig</code>
+    <code class="struct-name">ModemConfigOld</code>
   </summary>
   <div class="mod-body">
-    
+
     <div class="table-wrap"><table class="field-table">
 <thead>
 <tr>
@@ -3346,15 +3353,47 @@
 <tbody>
 <tr data-row="1">
 <td><code>atCommand</code></td>
-<td><span class="tpill tpill-texto">Texto</span> (até 39)</td>
-<td>—</td>
+<td><span class="tpill tpill-lista">Lista</span> de <span class="tpill tpill-texto">Texto</span> (até 39) (máx. 5)</td>
+<td>Comandos AT a enviar na inicialização do modem (formato legado). Apenas o primeiro comando de cada elemento é usado</td>
 <td>—</td>
 <td>—</td>
 </tr>
 </tbody>
 </table></div>
-    
-    
+
+
+  </div>
+</details>
+<details class="mod-card lvl-1" id="cfg-system-modemconfig">
+  <summary>
+    <span class="mod-num">6.10</span>
+    <span class="mod-name"><code>system.modemConfig</code></span>
+    <code class="struct-name">ModemConfig</code>
+  </summary>
+  <div class="mod-body">
+
+    <div class="table-wrap"><table class="field-table">
+<thead>
+<tr>
+<th>Campo</th>
+<th>Tipo</th>
+<th>Descrição</th>
+<th>Padrão</th>
+<th>Unidade / Faixa</th>
+</tr>
+</thead>
+<tbody>
+<tr data-row="1">
+<td><code>atCommand</code></td>
+<td><span class="tpill tpill-lista">Lista</span> de <span class="tpill tpill-texto">Texto</span> (até 39) (máx. 5)</td>
+<td>Comandos AT a enviar na inicialização do modem. Uma lista vazia (ou com o primeiro comando vazio) remove os comandos. Ao receber esta lista, a lista legada <code>system.modemCommands</code> é descartada</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+
+
   </div>
 </details>
 </div>
@@ -9415,6 +9454,13 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
 <td>—</td>
 </tr>
 <tr data-row="1">
+<td><code>gatewayMode</code></td>
+<td><span class="tpill tpill-enum">Enum</span> <a href="#enum-gatewaymode">GatewayMode</a></td>
+<td>Modo de gateway da conexão WiFi cliente. <code>GWM_PEER_LINK</code>: enlace dedicado com o equipamento par (MTC); a rede WiFi não é usada para internet, que continua pela rede celular, e o equipamento troca com o par o NMEA report e a posição de 1 segundo. Demais valores: ao conectar, o WiFi passa a ser a rota de internet</td>
+<td>GWM_ALWAYS</td>
+<td>—</td>
+</tr>
+<tr data-row="1">
 <td><code>dynamicCredentials</code></td>
 <td><span class="tpill tpill-booleano">Booleano</span> (0/1)</td>
 <td>—</td>
@@ -9430,8 +9476,8 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
 </tr>
 </tbody>
 </table></div>
-    
-    
+
+
   </div>
 </details>
 </div>
@@ -11866,6 +11912,51 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
 <td>3</td>
 <td><code>EPT_LEAD_ACID_24V</code></td>
 <td>—</td>
+</tr>
+</tbody>
+</table></div>
+  </div>
+</details>
+<details class="enum-card" id="enum-gatewaymode">
+  <summary>
+    <span class="enum-name"><code>GatewayMode</code></span>
+    <span class="enum-count">5 valores</span>
+  </summary>
+  <div class="enum-body">
+
+    <div class="table-wrap"><table class="enum-table">
+<thead>
+<tr>
+<th>Valor</th>
+<th>Nome</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr data-row="1">
+<td>0</td>
+<td><code>GWM_NONE</code></td>
+<td>Nenhum modo de gateway definido</td>
+</tr>
+<tr data-row="1">
+<td>1</td>
+<td><code>GWM_NEVER</code></td>
+<td>Interface nunca é usada como rota default (gateway)</td>
+</tr>
+<tr data-row="1">
+<td>2</td>
+<td><code>GWM_DYNAMIC</code></td>
+<td>Interface pode se tornar gateway dinamicamente conforme teste de serviço</td>
+</tr>
+<tr data-row="1">
+<td>3</td>
+<td><code>GWM_ALWAYS</code></td>
+<td>Interface sempre é usada como rota default (gateway)</td>
+</tr>
+<tr data-row="1">
+<td>5</td>
+<td><code>GWM_PEER_LINK</code></td>
+<td>Enlace exclusivo com o equipamento par (MTC): não é usado como uplink de internet</td>
 </tr>
 </tbody>
 </table></div>
