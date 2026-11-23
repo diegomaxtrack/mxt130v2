@@ -679,9 +679,23 @@
     <details class="version-group" open>
       <summary>
         <span class="version-group-label">Versão 4.4.x</span>
-        <span class="version-group-meta">23/10/2026</span>
+        <span class="version-group-meta">23/11/2026</span>
       </summary>
       <div class="version-group-body">
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 4.4.6</p>
+        <span class="release-date">23/11/2026</span>
+      </div>
+      <ul>
+        <li>Correção de evento falso de excesso de velocidade após a telemetria ficar alguns segundos sem processar (ex.: aplicação de um arquivo de usuários grande com o veículo em movimento)</li>
+        <li>Correção de evento de excesso de velocidade gerado de imediato, com duração incorreta, quando as amostras de velocidade voltam no meio do evento ou após um reset</li>
+        <li>Correção do reset do equipamento por falta de conexão em low power (o modem dormindo era contado como falha), que atrasava o envio dos eventos MAXIO</li>
+        <li>Correção da conexão principal que podia ficar presa abrindo após perda de cobertura (o equipamento ficava offline até um reset)</li>
+        <li>Conexão TCP com timeout de 8 s e envio do frame completo; falha no envio fecha a conexão</li>
+      </ul>
+    </article>
 
     <article class="release">
       <div class="release-head">
