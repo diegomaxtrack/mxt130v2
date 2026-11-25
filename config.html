@@ -7094,9 +7094,9 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
 <tr data-row="1">
 <td><code>useRXOnlyWhenGPRSUnavailable</code></td>
 <td><span class="tpill tpill-booleano">Booleano</span> (0/1)</td>
-<td>Deprecated</td>
+<td>Marcado como Deprecated no maxpb, mas ainda usado pelo firmware. Define quando a janela de RX de comando da máquina de estados LoRa (<code>LST_P2P_RX_COMMAND</code>) é aberta. 0 - sempre abre, pela duração da regra; 1 - só abre sem conexão com o servidor (socket desconectado); com o socket conectado a janela é pulada (duração forçada para 1 s). Com o modem dormindo/desligado o socket continua considerado conectado, então a janela segue desativada. Não afeta a janela de RX aberta após TX de emergência/posição (<code>rxIntervalAfterEmergencyTransmission</code>), que abre com ou sem conexão</td>
 <td>—</td>
-<td>—</td>
+<td>0/1</td>
 </tr>
 <tr data-row="1">
 <td><code>rxIntervalAfterEmergencyTransmission</code></td>
