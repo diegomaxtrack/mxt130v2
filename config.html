@@ -10100,49 +10100,88 @@ São mecanismos <strong>independentes</strong> (não há sobreposição), mas at
 <tr data-row="1">
 <td><code>interval</code></td>
 <td><span class="tpill tpill-inteiro">Inteiro</span> (u32)</td>
-<td>—</td>
-<td>—</td>
-<td>—</td>
+<td>Intervalo de advertising do beacon emitido. <strong>0 = não emite; &gt; 0 habilita a emissão</strong> (ver abaixo). O controlador usa de <code>interval</code> até <code>interval + 32</code> ms</td>
+<td>0 (somente RX)</td>
+<td>ms, 21..10207 (1..20 ou ≥ 10208 → 60)</td>
 </tr>
 <tr data-row="1">
 <td><code>uuid</code></td>
 <td>bytes (16)</td>
-<td>—</td>
-<td>—</td>
-<td>—</td>
+<td>Usado <strong>somente</strong> para alterar o tipo de produto (TIPO_MON): só o byte 12 é lido (0x00 indefinido, 0x01 veículo, 0x02 pessoa, 0x03 carga). Não é preciso configurá-lo para emitir</td>
+<td>todo zero (TIPO_MON = 0x00)</td>
+<td>16 bytes</td>
 </tr>
 <tr data-row="1">
 <td><code>rssiReference</code></td>
 <td><span class="tpill tpill-inteiro">Inteiro</span> (s32)</td>
-<td>—</td>
-<td>—</td>
-<td>—</td>
+<td>RSSI de referência anunciado no campo <em>ranging data</em> do Eddystone-UID. Os gateways o usam para estimar a distância</td>
+<td>-19</td>
+<td>dBm</td>
 </tr>
 <tr data-row="1">
 <td><code>windowDuration</code></td>
 <td><span class="tpill tpill-inteiro">Inteiro</span> (u32)</td>
-<td>—</td>
-<td>—</td>
-<td>—</td>
+<td>Ainda não utilizado</td>
+<td>1000</td>
+<td>ms</td>
 </tr>
 <tr data-row="1">
 <td><code>windowInterval</code></td>
 <td><span class="tpill tpill-inteiro">Inteiro</span> (u32)</td>
-<td>—</td>
-<td>—</td>
-<td>—</td>
+<td>Ainda não utilizado</td>
+<td>5000</td>
+<td>ms</td>
 </tr>
 <tr data-row="1">
 <td><code>power</code></td>
 <td><span class="tpill tpill-inteiro">Inteiro</span> (s32)</td>
-<td>—</td>
-<td>—</td>
-<td>—</td>
+<td>Potência de transmissão do advertising. Vale o nível suportado mais próximo (-12, -9, -6, -3, 0, 3, 6, 9); fora da faixa, satura</td>
+<td>0</td>
+<td>dBm, -12..9</td>
 </tr>
 </tbody>
 </table></div>
-    
-    
+
+    <p><strong>Emissão de beacon (modo RX + TX).</strong> Com <code>bluetooth.power = BP_BEACON</code>, o equipamento sempre escuta beacons (gateway). Com <code>beacons.transmission.interval</code> maior que zero, ele também <strong>emite</strong> um beacon Eddystone-UID não conectável. Assim ele passa a ser visto como device por outros gateways, inclusive por outro MXT130. Com <code>interval = 0</code> (padrão), o comportamento é o de antes: somente escuta. No modo beacon a conexão GATT do app fica indisponível, com ou sem emissão.</p>
+    <p>Os 16 bytes emitidos (namespace 10 + instance 6) seguem o <strong>protocolo Eddystone MAXTRACK</strong>, o mesmo dos beacons A4X:</p>
+    <div class="table-wrap"><table class="field-table">
+<thead>
+<tr>
+<th>Byte</th>
+<th>Campo</th>
+<th>Conteúdo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0..9</td>
+<td>Namespace</td>
+<td>ASCII fixo <code>"MAXTRACK00"</code></td>
+</tr>
+<tr>
+<td>10</td>
+<td>FLAGS</td>
+<td>bit0 em movimento, bit1 g-sensor calibrado, bit2 entrada 01 (ignição), bit3 emergência, bits 4..7 CRC (enviado como 0, igual ao A4X)</td>
+</tr>
+<tr>
+<td>11</td>
+<td>VERSAO</td>
+<td>Versão do firmware, com a mesma codificação do A4X: MAJOR nos bits 0..2 e MINOR nos bits 3..7 (<code>MAJOR | (MINOR &lt;&lt; 3)</code>; ex.: 4.4 → <code>0x24</code>)</td>
+</tr>
+<tr>
+<td>12</td>
+<td>TIPO_MON</td>
+<td>Tipo de ativo monitorado: <code>uuid[12]</code> da configuração, ou 0x00 se não configurado</td>
+</tr>
+<tr>
+<td>13..15</td>
+<td>LORA_ID</td>
+<td>LoRa ID do equipamento (24 bits, MSB primeiro)</td>
+</tr>
+</tbody>
+</table></div>
+    <p>As flags são reavaliadas a cada 30 s e, quando mudam, o payload é atualizado sem reiniciar o Bluetooth. As alterações de <code>beacons.transmission</code> passam a valer na próxima vez que o Bluetooth for ligado (transição do controle de energia ou reinício).</p>
+
   </div>
 </details>
 <details class="mod-card lvl-1" id="cfg-beacons-mask">
