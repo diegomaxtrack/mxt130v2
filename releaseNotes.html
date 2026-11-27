@@ -679,9 +679,22 @@
     <details class="version-group" open>
       <summary>
         <span class="version-group-label">Versão 4.4.x</span>
-        <span class="version-group-meta">23/11/2026</span>
+        <span class="version-group-meta">27/11/2026</span>
       </summary>
       <div class="version-group-body">
+
+    <article class="release">
+      <div class="release-head">
+        <p class="release-version">Versão 4.4.7</p>
+        <span class="release-date">27/11/2026</span>
+      </div>
+      <ul>
+        <li>Emissão de beacon no modo Beacon (RX + TX): com <code>bluetooth.power = BP_BEACON</code> e <code>beacons.transmission.interval</code> maior que zero, o equipamento também emite um beacon Eddystone-UID no protocolo MAXTRACK (o mesmo dos A4X) e passa a ser visto por outros gateways, inclusive por outro MXT130</li>
+        <li>Novo padrão de <code>beacons.transmission.interval</code>: 0 (somente escuta, como antes). Os campos <code>rssiReference</code>, <code>power</code> e <code>uuid</code> (byte 12 = tipo de ativo) passam a ser usados na emissão</li>
+        <li>Relatório de acessórios passa a informar o modelo de produto dos beacons detectados (<code>DT_BEACON</code>)</li>
+        <li>Correção da idade (age) da posição GPS: quando as amostras do GPS paravam de chegar, uma posição de alguns segundos atrás era enviada com age 0, seguida de um salto de posição e de hodômetro. O age agora considera o tempo, em segundos, desde a última amostra válida</li>
+      </ul>
+    </article>
 
     <article class="release">
       <div class="release-head">
